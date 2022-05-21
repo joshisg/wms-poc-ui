@@ -19,15 +19,14 @@ class ListFarmerComponent extends Component {
     }
     
     addFarmer(){
-        
-        this.props.history.push('/add-farmer');
+          this.props.history.push('/add-farmer');
     }
     render() {
         return (
             <div>
                 <h2 className="text-center"> Farmers List</h2>
-                <div className=''>
-                    <button className='btn btn-primary' onClick={this.addFarmer} > Add Farmer</button>
+                <div className="row">
+                    <button className=" btn btn-primary" onClick={this.addFarmer} > Add Farmer</button>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-bordered">
