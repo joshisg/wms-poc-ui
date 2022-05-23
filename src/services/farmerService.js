@@ -16,6 +16,14 @@ class FarmerService{
     getFarmerByFarmerId(farmerId){
         return axios.get(FARMER_API_POST_FARMER_URL + '/' + farmerId);
     }
+
+    updateFarmer(farmer,farmerId){
+        return axios.put(FARMER_API_POST_FARMER_URL + '/' + farmerId,farmer);
+    }
+
+    deleteFarmer(farmerId){
+        return axios.delete(FARMER_API_POST_FARMER_URL + '/' + farmerId);
+    }
 }
 
 export default new FarmerService();

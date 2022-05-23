@@ -11,8 +11,16 @@ class ListFarmerComponent extends Component {
         }
         this.addFarmer=this.addFarmer.bind(this);
         this.editFarmer=this.editFarmer.bind(this);
+        this.deleteFarmer=this.deleteFarmer.bind(this);
 
     }
+    deleteFarmer(farmerId){
+        farmerService.deleteFarmer(farmerId).then(res=>{
+            this.setState({farmers: this.state.farmers.filter(farmer => farmer.farmerId !== farmerId)});
+        });
+
+    }
+
     editFarmer(farmerId){
         this.props.history.push(`/update-farmer/${farmerId}`);
     }
@@ -29,8 +37,8 @@ class ListFarmerComponent extends Component {
         return (
             <div>
                 <h2 className="text-center"> Farmers List</h2>
-                <div className="row">
-                    <button className=" btn btn-primary" onClick={this.addFarmer} > Add Farmer</button>
+                <div>
+                    <button style={{marginBottom: "20px"}} className=" btn btn-primary" onClick={this.addFarmer} > Add Farmer</button>
                 </div>
                 <div className="row">
                     <table className="table table-striped table-bordered">
@@ -51,7 +59,7 @@ class ListFarmerComponent extends Component {
                             {
                                 this.state.farmers.map(
                                     farmer =>
-                                        <tr key={farmer.id}>
+                                        <tr key={farmer.farmerId}>
                                             <td> {farmer.farmerName} </td>
                                             <td> {farmer.farmerMobileNo} </td>
                                             <td> {farmer.aadharNo} </td>
@@ -59,7 +67,8 @@ class ListFarmerComponent extends Component {
                                             <td> {farmer.state} </td>
                                             <td> {farmer.zipcode} </td>
                                             <td>
-                                                <button onClick={ () => this.editFarmer(farmer.farmerId)} className="btn-btn-info">Update</button>
+                                                <button onClick={ () => this.editFarmer(farmer.farmerId)} className="btn btn-info">Update</button>
+                                                <button style={{marginLeft: "20px"}} onClick={ () => this.deleteFarmer(farmer.farmerId)} className="btn btn-danger">delete</button>
                                             </td>
                                         </tr>
 

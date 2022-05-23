@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import farmerService from '../services/farmerService';
 
+
+
 class UpdateFarmerComponenet extends Component {
     constructor(props) {
         super(props)
@@ -39,6 +41,9 @@ class UpdateFarmerComponenet extends Component {
         e.preventDefault();
         let farmer = { farmerName: this.state.farmerName, farmerMobileNo: this.state.farmerMobileNo, aadharNo: this.state.aadharNo, city: this.state.city, state: this.state.state, zipcode: this.state.zipcode }
         console.log('farmer =>' + JSON.stringify(farmer));
+        farmerService.updateFarmer(farmer,this.state.farmerId).then(res =>{
+            this.props.history.push('/farmers');
+        });
         
     }
 
@@ -65,42 +70,42 @@ class UpdateFarmerComponenet extends Component {
     }
     render() {
         return (
-            <div>
+            <div >
                 <div className="container">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center"> Add Farmer</h3>
+                            <h3 className="text-center"> Update Farmer</h3>
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
-                                        <label> Full Name:</label>
+                                        <label> Full Name</label>
                                         <input placeholder="Full Name" name="farmerName" className="form-control" value={this.state.farmerName} onChange={this.changeFarmerNameHandler} />
 
                                     </div>
                                     <div className="form-group">
 
-                                        <label> Mobile Number:</label>
+                                        <label> Mobile Number</label>
                                         <input placeholder="Mobile Number" name="farmerMobileNo" className="form-control"
                                             value={this.state.farmerMobileNo} onChange={this.changefarmerMobileNoHandler} />
 
                                     </div>
                                     <div className="form-group">
 
-                                        <label> Aadhar Number:</label>
+                                        <label> Aadhar Numbe</label>
                                         <input placeholder="Aadhar Number:" name="aadharNo" className="form-control"
                                             value={this.state.aadharNo} onChange={this.changeaadharNoHandler} />
 
                                     </div>
                                     <div className="form-group">
 
-                                        <label> City:</label>
+                                        <label> City</label>
                                         <input placeholder="City" name="city" className="form-control"
                                             value={this.state.city} onChange={this.changeCityHandler} />
 
                                     </div>
                                     <div className="form-group">
 
-                                        <label> State:</label>
+                                        <label> State</label>
                                         <input placeholder="State" name="state" className="form-control"
                                             value={this.state.state} onChange={this.changeStateHandler} />
 
@@ -108,12 +113,12 @@ class UpdateFarmerComponenet extends Component {
 
                                     <div className="form-group">
 
-                                        <label> Zipcode:</label>
+                                        <label> Zipcode</label>
                                         <input placeholder="Zipcode" name="zipcode" className="form-control"
                                             value={this.state.zipcode} onChange={this.changeZipcodeHandler} />
 
                                     </div>
-                                    <button className="btn btn-success" onClick={this.updateFarmer}>Save</button>
+                                    <button className="btn btn-success" onClick={this.updateFarmer}>Update</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>
                             </div>
