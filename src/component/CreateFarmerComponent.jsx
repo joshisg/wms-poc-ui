@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import farmerService from '../services/farmerService';
 
 class CreateFarmerComponent extends Component {
 
@@ -7,16 +8,16 @@ class CreateFarmerComponent extends Component {
         super(props)
 
         this.state = {
-            fullName: '',
-            mobileNumber: '',
-            aadharNumber: '',
+            farmerName: '',
+            farmerMobileNo: '',
+            aadharNo: '',
             city: '',
             state: '',
             zipcode: ''
         }
-        this.changeFullNameHandler = this.changeFullNameHandler.bind(this);
-        this.changeMobileNumberHandler = this.changeMobileNumberHandler.bind(this);
-        this.changeAadharNumberHandler = this.changeAadharNumberHandler.bind(this);
+        this.changeFarmerNameHandler = this.changeFarmerNameHandler.bind(this);
+        this.changefarmerMobileNoHandler = this.changefarmerMobileNoHandler.bind(this);
+        this.changeaadharNoHandler = this.changeaadharNoHandler.bind(this);
         this.changeCityHandler = this.changeCityHandler.bind(this);
         this.changeStateHandler = this.changeStateHandler.bind(this);
         this.changeZipcodeHandler = this.changeZipcodeHandler.bind(this);
@@ -25,18 +26,21 @@ class CreateFarmerComponent extends Component {
     }
     saveFarmer = (e) => {
         e.preventDefault();
-        let farmer = { fullName: this.state.fullName, mobileNumber: this.state.mobileNumber, aadharNumber: this.state.aadharNumber, city: this.state.city, state: this.state.state, zipcode: this.state.zipcode }
+        let farmer = { farmerName: this.state.farmerName, farmerMobileNo: this.state.farmerMobileNo, aadharNo: this.state.aadharNo, city: this.state.city, state: this.state.state, zipcode: this.state.zipcode }
         console.log('farmer =>' + JSON.stringify(farmer));
+        farmerService.createFarmer(farmer).then(res =>{
+            this.props.history.push('/farmers');
+        });
     }
 
-    changeFullNameHandler = (event) => {
-        this.setState({ fullName: event.target.value });
+    changeFarmerNameHandler = (event) => {
+        this.setState({ farmerName: event.target.value });
     }
-    changeMobileNumberHandler = (event) => {
-        this.setState({ mobileNumber: event.target.value });
+    changefarmerMobileNoHandler = (event) => {
+        this.setState({ farmerMobileNo: event.target.value });
     }
-    changeAadharNumberHandler = (event) => {
-        this.setState({ aadharNumber: event.target.value });
+    changeaadharNoHandler = (event) => {
+        this.setState({ aadharNo: event.target.value });
     }
     changeCityHandler = (event) => {
         this.setState({ city: event.target.value });
@@ -47,7 +51,7 @@ class CreateFarmerComponent extends Component {
     changeZipcodeHandler = (event) => {
         this.setState({ zipcode: event.target.value });
     }
-    cance(){
+    cancel(){ 
         this.props.history.push('/farmers');
     }
     render() {
@@ -61,21 +65,21 @@ class CreateFarmerComponent extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label> Full Name:</label>
-                                        <input placeholder="Full Name" name="fullName" className="form-control" value={this.state.fullName} onChange={this.changeFullNameHandler} />
+                                        <input placeholder="Full Name" name="farmerName" className="form-control" value={this.state.farmerName} onChange={this.changeFarmerNameHandler} />
 
                                     </div>
                                     <div className="form-group">
 
                                         <label> Mobile Number:</label>
-                                        <input placeholder="Mobile Number" name="mobileNumber" className="form-control"
-                                            value={this.state.mobileNumber} onChange={this.changeMobileNumberHandler} />
+                                        <input placeholder="Mobile Number" name="farmerMobileNo" className="form-control"
+                                            value={this.state.farmerMobileNo} onChange={this.changefarmerMobileNoHandler} />
 
                                     </div>
                                     <div className="form-group">
 
                                         <label> Aadhar Number:</label>
-                                        <input placeholder="Aadhar Number:" name="aadharNumber" className="form-control"
-                                            value={this.state.aadharNumber} onChange={this.changeAadharNumberHandler} />
+                                        <input placeholder="Aadhar Number:" name="aadharNo" className="form-control"
+                                            value={this.state.aadharNo} onChange={this.changeaadharNoHandler} />
 
                                     </div>
                                     <div className="form-group">
@@ -101,7 +105,7 @@ class CreateFarmerComponent extends Component {
 
                                     </div>
                                     <button className="btn btn-success" onClick={this.saveFarmer}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}> Cancel</button>
+                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>
                             </div>
                         </div>
