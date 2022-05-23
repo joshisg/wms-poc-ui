@@ -12,6 +12,10 @@ class FarmerService{
     createFarmer(farmer){
         return axios.post(FARMER_API_POST_FARMER_URL,farmer);
     }
+
+    getFarmerByFarmerId(farmerId){
+        return axios.get(FARMER_API_POST_FARMER_URL + '/' + farmerId);
+    }
 }
 
 export default new FarmerService();

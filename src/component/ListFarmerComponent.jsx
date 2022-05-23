@@ -10,7 +10,11 @@ class ListFarmerComponent extends Component {
             farmers: []
         }
         this.addFarmer=this.addFarmer.bind(this);
+        this.editFarmer=this.editFarmer.bind(this);
 
+    }
+    editFarmer(farmerId){
+        this.props.history.push(`/update-farmer/${farmerId}`);
     }
     componentDidMount() {
         farmerService.getFarmers().then((res) => {
