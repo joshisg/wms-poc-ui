@@ -54,6 +54,9 @@ class ListFarmerComponent extends Component {
                                             <td> {farmer.city} </td>
                                             <td> {farmer.state} </td>
                                             <td> {farmer.zipcode} </td>
+                                            <td>
+                                                <button onClick={ () => this.editFarmer(farmer.farmerId)} className="btn-btn-info">Update</button>
+                                            </td>
                                         </tr>
 
                                 )

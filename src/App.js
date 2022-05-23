@@ -5,6 +5,7 @@ import ListFarmerComponent from './component/ListFarmerComponent';
 import HeaderComponent from './component/HeaderComponent';
 import FooterComponent from './component/FooterComponent';
 import CreateFarmerComponent from './component/CreateFarmerComponent';
+import UpdateFaremerComponent from './component/UpdateFaremerComponent';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" exact component={ListFarmerComponent }></Route>
             <Route path="/farmers" component={ListFarmerComponent}></Route>
             <Route path="/add-farmer" component={CreateFarmerComponent}></Route>
+            <Route path="/update-farmer/:farmerId" component={UpdateFaremerComponent}></Route>
           </Switch>
         </div>
         <FooterComponent />
