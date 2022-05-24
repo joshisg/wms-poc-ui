@@ -14,6 +14,9 @@ class ListFarmerComponent extends Component {
         this.deleteFarmer=this.deleteFarmer.bind(this);
 
     }
+    viewFarmer(farmerId){
+        this.props.history.push(`/view-farmer/${farmerId}`);
+    }
     deleteFarmer(farmerId){
         farmerService.deleteFarmer(farmerId).then(res=>{
             this.setState({farmers: this.state.farmers.filter(farmer => farmer.farmerId !== farmerId)});
@@ -69,6 +72,7 @@ class ListFarmerComponent extends Component {
                                             <td>
                                                 <button onClick={ () => this.editFarmer(farmer.farmerId)} className="btn btn-info">Update</button>
                                                 <button style={{marginLeft: "20px"}} onClick={ () => this.deleteFarmer(farmer.farmerId)} className="btn btn-danger">delete</button>
+                                                <button style={{marginLeft: "20px"}} onClick={ () => this.viewFarmer(farmer.farmerId)} className="btn btn-info">view</button>
                                             </td>
                                         </tr>
 

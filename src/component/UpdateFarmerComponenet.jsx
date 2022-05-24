@@ -118,8 +118,8 @@ class UpdateFarmerComponenet extends Component {
                                             value={this.state.zipcode} onChange={this.changeZipcodeHandler} />
 
                                     </div>
-                                    <button className="btn btn-success" onClick={this.updateFarmer}>Update</button>
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                                    <button style={{ marginTop: "20px" }} className="btn btn-success" onClick={this.updateFarmer}>Update</button>
+                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px", marginTop: "20px" }}>Cancel</button>
                                 </form>
                             </div>
                         </div>
